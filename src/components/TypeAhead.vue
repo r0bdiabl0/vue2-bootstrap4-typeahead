@@ -2,7 +2,7 @@
     <div class="input-group" :class="[classes]">
         <input type="text" class="form-control type-ahead-select taller"
                :placeholder="placeholder"
-               autocomplete="off"
+               autocomplete="do-not-use"
                v-model="query"
                @keydown.down="down"
                @keydown.up="up"
@@ -300,26 +300,12 @@
       }
     }
   }
-
-
 </script>
 
 <style scoped>
     div.input-group input.form-control.type-ahead-select {
         border-top-right-radius: .25rem;
         border-bottom-right-radius: .25rem;
-    }
-
-    ul li {
-        padding: 5px .50rem;
-        margin: 0px .25rem;
-        cursor: pointer;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    ul li:hover {
-        background-color: #f1f2f3;
     }
 </style>
 
