@@ -1,8 +1,9 @@
 ![](./static/npm.png)
-# vue2-typeahead
+# vue2-bs4-typeahead
 
-> typeahead for vue2  
-> Based on[https://github.com/pespantelis/vue-typeahead](https://github.com/pespantelis/vue-typeahead)
+> typeahead for vue2 and bootstrap 4
+> based on [https://github.com/pespantelis/vue-typeahead](https://github.com/pespantelis/vue-typeahead)
+and [https://github.com/trionfo1993/vue2-typeahead](https://github.com/trionfo1993/vue2-typeahead)
 
 ## Quick preview
 ![demo](./static/demo.gif)
@@ -18,14 +19,11 @@ npm run dev
 
 ```
 
-## Warning
-Prepared rewrite by vue2.5 and bootstrap 4
-
 ## How to use
 1. ~~Please install axios~~
 2. It base on bootstrap css
-3. ``` npm install vue2-typeahead --save```
-4. import and use it ``` import TypeAhead from 'vue2-typeahead' ``` or ``` import TypeAhead from 'vue2-typeahead/src/components/TypeAhead.vue' ```
+3. ``` npm install vue2-bs4-typeahead --save```
+4. import and use it ``` import TypeAhead from 'vue2-bs4-typeahead' ``` or ``` import TypeAhead from 'vue2-bs4-typeahead/src/components/TypeAhead.vue' ```
 5. config (you can get a config sample from Demo.vue)
 
 ### Sample
@@ -128,4 +126,4 @@ Some function will return vue object, it is the instance of component and i use 
 ```
 
 # License
-vue2-typeahead is released under the MIT License. See the bundled LICENSE file for details.
+vue2-bs4-typeahead is released under the MIT License. See the bundled LICENSE file for details.
