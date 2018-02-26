@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/r0bdiabl0/vue2-bs4-typeahead"
+    "url": "https://github.com/r0bdiabl0/vue2-bootstrap4-typeahead"
   },
   "main": "src/components/TypeAhead.vue",
   "license": "MIT",
