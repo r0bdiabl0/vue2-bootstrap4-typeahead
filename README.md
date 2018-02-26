@@ -126,4 +126,4 @@ Some function will return vue object, it is the instance of component and i use 
 ```
 
 # License
-vue2-bs4-typeahead is released under the MIT License. See the bundled LICENSE file for details.
+vue2-bootstrap4-typeahead is released under the MIT License. See the bundled LICENSE file for details.
