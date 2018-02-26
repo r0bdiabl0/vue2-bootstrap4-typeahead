@@ -1,41 +1,37 @@
 <template>
     <div class="input-group" :class="[classes]">
-      <input type="text" class="form-control type-ahead-select taller"
-             :placeholder="placeholder"
-             autocomplete="off"
-             v-model="query"
-             @keydown.down="down"
-             @keydown.up="up"
-             @keydown.enter.prevent="hit"
-             @keydown.esc="reset"
-             @input="update($event)"/>
+        <input type="text" class="form-control type-ahead-select taller"
+               :placeholder="placeholder"
+               autocomplete="off"
+               v-model="query"
+               @keydown.down="down"
+               @keydown.up="up"
+               @keydown.enter.prevent="hit"
+               @keydown.esc="reset"
+               @input="update($event)"/>
 
-      <ul v-show="hasItems" class="dropdown-menu-list dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-        <li v-for="(item , index) in items" :class="{active:activeClass(index)}"
-            @mousedown="hit" @mousemove="setActive(index)">
-          <a v-html="highlighting(item, vue)"></a>
-        </li>
-      </ul>
-      <ul v-if="showSearchingFlag" v-show="!hasItems&&!isEmpty" class="dropdown-menu" role="menu"
-          aria-labelledby="dropdownMenu">
-        <li class="active" @mousemove="setActive(index)" v-if="!loading">
-          <a>
-            <span v-html="NoResultText"></span>
-          </a>
-        </li>
-        <li class="active" @mousemove="setActive(index)" v-else>
-          <a>
-            <span v-html="SearchingText"></span>
-          </a>
-        </li>
-      </ul>
+        <div v-show="hasItems" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+            <a class="dropdown-item" v-for="(item , index) in items" :class="{active:activeClass(index)}"
+               @mousedown="hit" @mousemove="setActive(index)">
+                <span v-html="highlighting(item, vue)"></span>
+            </a>
+        </div>
+        <div v-if="showSearchingFlag" v-show="!hasItems&&!isEmpty" class="dropdown-menu" role="menu"
+             aria-labelledby="dropdownMenu">
+            <a class="active dropdown-item" @mousemove="setActive(index)" v-if="!loading">
+                <span v-html="NoResultText"></span>
+            </a>
+            <a class="active dropdown-item" @mousemove="setActive(index)" v-else>
+                <span v-html="SearchingText"></span>
+            </a>
+        </div>
     </div>
 </template>
 <style scoped>
-  .dropdown-menu-list {
-    display: list-item;
-    width: 100%;
-  }
+    .dropdown-menu-list {
+        display: list-item;
+        width: 100%;
+    }
 </style>
 <script lang="babel">
   import axios from 'axios'
@@ -123,8 +119,8 @@
         required: false,
         type: Function,
         default: function (item) {
-          var re = new RegExp(this.query, 'ig');
-          var matches = item.match(re);
+          var re = new RegExp(this.query, 'ig')
+          var matches = item.match(re)
 
           matches && matches.forEach(match => {
             item = item.replace(match, `<b>${match}</b>`)
@@ -174,18 +170,16 @@
       }
     },
     methods: {
-      objectUpdate (){
-        var filtered = this.objectArray.filter(entity => entity.toLowerCase().includes(this.query.toLowerCase()));
-        this.data = this.limit ? filtered.slice(0, this.limit) : filtered;
+      objectUpdate () {
+        var filtered = this.objectArray.filter(entity => entity.toLowerCase().includes(this.query.toLowerCase()))
+        this.data = this.limit ? filtered.slice(0, this.limit) : filtered
         this.items = this.render(this.limit ? this.data.slice(0, this.limit) : this.data, this)
-        
-        this.current = -1;
+  
+        this.current = -1
 
         if (this.selectFirst) {
           this.down()
         }
-
-
       },
       update (event) {
         this.lastTime = event.timeStamp
@@ -199,7 +193,7 @@
         // 添加的延时
         setTimeout(() => {
           if (this.lastTime - event.timeStamp === 0) {
-            if(this.objectArray){
+            if (this.objectArray) {
               return this.objectUpdate()
             }
 
@@ -301,29 +295,30 @@
         }
       })
 
-      if(this.objectArray){
+      if (this.objectArray) {
         this.objectArray.sort()
       }
     }
   }
+
 </script>
 
 <style scoped>
-  div.input-group input.form-control.type-ahead-select{
-    border-top-right-radius: .25rem;
-     border-bottom-right-radius: .25rem;
-  }
+    div.input-group input.form-control.type-ahead-select {
+        border-top-right-radius: .25rem;
+        border-bottom-right-radius: .25rem;
+    }
 
-  ul li{
-    padding: 5px .50rem;
-    margin: 0px .25rem;
-    cursor: pointer;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+    ul li {
+        padding: 5px .50rem;
+        margin: 0px .25rem;
+        cursor: pointer;
+        border-radius: 4px;
+        cursor: pointer;
+    }
 
-  ul li:hover{
-    background-color: #f1f2f3;
-  }
+    ul li:hover {
+        background-color: #f1f2f3;
+    }
 </style>
 
