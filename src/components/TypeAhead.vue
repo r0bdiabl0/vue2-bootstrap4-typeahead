@@ -10,7 +10,7 @@
                @keydown.esc="reset"
                @input="update($event)"/>
 
-        <div v-show="hasItems" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+        <div v-show="hasItems" class="dropdown-menu dropdown-menu-list" role="menu" aria-labelledby="dropdownMenu">
             <a class="dropdown-item" v-for="(item , index) in items" :class="{active:activeClass(index)}"
                @mousedown="hit" @mousemove="setActive(index)">
                 <span v-html="highlighting(item, vue)"></span>
@@ -300,6 +300,7 @@
       }
     }
   }
+
 
 </script>
 
